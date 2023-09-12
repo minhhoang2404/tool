@@ -1,0 +1,52 @@
+{
+    "name": "data-service",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon",
+        "build": "tsc",
+        "createdatabase": "node Tools/createdatabase.js",
+        "truncatedatabase": "node Tools/truncatedatabase.js",
+        "alterdatabase": "node Tools/alterdatabase.js",
+        "start": "npm run createdatabase && npm run alterdatabase && node build/index.js"
+    },
+    "author": "CP team",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "bignumber.js": "^9.1.1",
+        "cron": "^1.8.2",
+        "dotenv": "^10.0.0",
+        "fastify": "^3.15.1",
+        "fastify-cors": "^6.0.2",
+        "fastify-swagger": "^4.8.4",
+        "http-status": "^1.5.0",
+        "joi": "^17.4.0",
+        "lodash": "^4.17.21",
+        "moment": "^2.29.1",
+        "pg": "^8.7.1",
+        "pg-hstore": "^2.3.4",
+        "pino": "^7.6.3",
+        "sequelize": "^6.6.5",
+        "web3": "^1.10.0"
+    },
+    "devDependencies": {
+        "@types/cron": "^1.7.3",
+        "@types/lodash": "^4.14.172",
+        "@types/node": "^15.14.9",
+        "@types/pg": "^8.6.5",
+        "@types/pino": "^7.0.5",
+        "@types/sequelize": "^4.28.10",
+        "@typescript-eslint/eslint-plugin": "^3.9.0",
+        "@typescript-eslint/parser": "^3.9.0",
+        "eslint": "^7.6.0",
+        "eslint-config-airbnb-typescript": "^9.0.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.22.0",
+        "nodemon": "^2.0.4",
+        "ts-node": "^8.10.2",
+        "ts-node-dev": "^1.0.0-pre.49",
+        "typescript": "^4.2.4"
+    }
+}
