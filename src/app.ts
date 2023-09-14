@@ -1,12 +1,9 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import errorHandler from './plugins/error-handler';
 import { JoiSchema } from './interfaces/validator';
-import Routes from './routes/v1';
 import cors from 'fastify-cors';
 
 const server: FastifyInstance = Fastify({ bodyLimit: 30 * 1024 * 1024 });
-
-server.register(Routes, { prefix: '/v1' });
 
 server.register(cors, {
     origin: '*',

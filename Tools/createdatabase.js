@@ -42,21 +42,33 @@ async function create() {
     await createTable(
         client,
         `
-        CREATE TABLE IF NOT EXISTS transaction (
+        CREATE TABLE IF NOT EXISTS wallet (
             id serial,
-            transaction_hash VARCHAR(255) NOT NULL,
-            wallet VARCHAR(255) NOT NULL,
-            token_from VARCHAR(255) NOT NULL,
-            token_to VARCHAR(255) NOT NULL,
-            amount_in float8,
-            amount_out float8,
-            rate float8,
+            address VARCHAR(255) NOT NULL,
+            seed TEXT,
+            private_key VARCHAR(255) NOT NULL,
+            status VARCHAR(255) NOT NULL,
+            withdrawal_id VARCHAR(255) NOT NULL,
+            created_at timestamp with time zone NOT NULL
+        );
+    `
+    );
+
+    await createIndex(client, `CREATE UNIQUE INDEX wallet_address_idx ON wallet (address);`);
+
+    await createTable(
+        client,
+        `
+        CREATE TABLE IF NOT EXISTS control (
+            id serial,
+            chat_id VARCHAR(255) NOT NULL,
+            status BOOLEAN,
             updated_at timestamp with time zone NOT NULL
         );
     `
     );
 
-    await createIndex(client, `CREATE UNIQUE INDEX transaction_transaction_hash_idx ON transaction (transaction_hash);`);
+    await createIndex(client, `CREATE UNIQUE INDEX control_chat_id_idx ON control (chat_id);`);
 
     await client.end();
 

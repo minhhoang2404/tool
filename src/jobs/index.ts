@@ -1,3 +1,3 @@
-import * as VolumeJob from './volume-job';
+import * as BotJob from './bot-job';
 
-export { VolumeJob };
+export { BotJob };

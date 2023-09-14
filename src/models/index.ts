@@ -4,7 +4,8 @@ import { AppLogger as logger } from '../utils/logger';
 
 import sendLog from '../utils/slack-bot';
 
-import { volumeFactory } from './volume-model';
+import { walletFactory } from './wallet-model';
+import { controlFactory } from './control-model';
 
 export const sequelize = new Sequelize(DB_URI + "/" + DB_NAME, {
     logging: false,
@@ -14,7 +15,8 @@ export type StaticModel = typeof Model & {
     new (values?: object, options?: BuildOptions): Model;
 };
 
-export const VolumeModel = volumeFactory(sequelize);
+export const WalletModel = walletFactory(sequelize);
+export const ControlModel = controlFactory(sequelize);
 
 export async function initDatabase(): Promise<void> {
     try {
